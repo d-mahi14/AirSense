@@ -1,0 +1,275 @@
+"""
+Helper script to generate notebooks/01_exploratory_data_analysis.ipynb
+"""
+
+import json
+from pathlib import Path
+
+def create_notebook():
+    nb = {
+        "cells": [
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "# AirSense: Notebook 01 — Exploratory Data Analysis & Data Cleaning\n",
+                    "\n",
+                    "**Project:** AirSense — Air Quality Prediction and Analysis Using Machine Learning  \n",
+                    "**Dataset:** India Air Quality (2015–2020), `city_day.csv`  \n",
+                    "**Objective:** Empirical investigation of pollutant distributions, missingness patterns, CPCB target class distributions, spatial-temporal variations, and leak-free preprocessing.\n"
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "import sys\n",
+                    "from pathlib import Path\n",
+                    "import pandas as pd\n",
+                    "import numpy as np\n",
+                    "import matplotlib.pyplot as plt\n",
+                    "import seaborn as sns\n",
+                    "\n",
+                    "# Add project root to sys.path\n",
+                    "project_root = Path.cwd().parent if Path.cwd().name == 'notebooks' else Path.cwd()\n",
+                    "if str(project_root) not in sys.path:\n",
+                    "    sys.path.insert(0, str(project_root))\n",
+                    "\n",
+                    "from src.data_loader import load_city_day, POLLUTANT_COLUMNS, CPCB_AQI_CATEGORIES\n",
+                    "from src.preprocessing import (\n",
+                    "    filter_labeled_data,\n",
+                    "    extract_temporal_features,\n",
+                    "    create_stratified_split,\n",
+                    "    fit_imputer,\n",
+                    "    transform_impute,\n",
+                    "    save_processed_splits\n",
+                    ")\n",
+                    "\n",
+                    "sns.set_theme(style='whitegrid')\n",
+                    "print('Libraries and custom modules loaded successfully!')\n"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 1. Data Ingestion & Target Label Filtering\n",
+                    "Under CPCB standards, observations missing `AQI_Bucket` cannot be reliably evaluated for classification.\n",
+                    "In strict accordance with project rules, target labels are **never imputed**.\n"
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "# Load raw city_day.csv\n",
+                    "df_raw = load_city_day(parse_dates=True, drop_na_target=False)\n",
+                    "print('Raw dataset shape:', df_raw.shape)\n",
+                    "\n",
+                    "# Filter observations with valid ground-truth target\n",
+                    "df_labeled, audit = filter_labeled_data(df_raw, target_col='AQI_Bucket')\n",
+                    "print(f\"Dropped {audit['dropped_missing_target']} rows ({audit['dropped_pct']}%) with missing AQI_Bucket\")\n",
+                    "print(f\"Retained {len(df_labeled)} labeled rows for EDA and modeling\")\n",
+                    "df_labeled.head(5)\n"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 2. Missing-Value Frequency & Feature Sparsity\n",
+                    "Comparing missingness between the raw dataset and the labeled subset.\n"
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "missing_summary = pd.DataFrame({\n",
+                    "    'Raw_Null_Count': df_raw.isnull().sum(),\n",
+                    "    'Raw_Null_Pct': (df_raw.isnull().mean() * 100).round(2),\n",
+                    "    'Labeled_Null_Count': df_labeled.isnull().sum(),\n",
+                    "    'Labeled_Null_Pct': (df_labeled.isnull().mean() * 100).round(2)\n",
+                    "})\n",
+                    "missing_summary\n"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 3. Target Distribution (`AQI_Bucket`) & Severe Class Imbalance\n",
+                    "Evaluating the prevalence of each official CPCB category.\n"
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "counts = df_labeled['AQI_Bucket'].value_counts().reindex(CPCB_AQI_CATEGORIES)\n",
+                    "percentages = (counts / len(df_labeled) * 100).round(2)\n",
+                    "cpcb_table = pd.DataFrame({'Count': counts, 'Percentage': percentages})\n",
+                    "print(cpcb_table)\n",
+                    "\n",
+                    "plt.figure(figsize=(9, 5))\n",
+                    "colors = ['#2ecc71', '#a8e6cf', '#f39c12', '#e67e22', '#e74c3c', '#7b1fa2']\n",
+                    "bars = plt.bar(counts.index, counts.values, color=colors, edgecolor='black')\n",
+                    "plt.title('CPCB AQI Category Distribution (Severe Imbalance)', weight='bold')\n",
+                    "plt.ylabel('Observations')\n",
+                    "for b, c, p in zip(bars, counts.values, percentages.values):\n",
+                    "    plt.text(b.get_x() + b.get_width()/2, c + 150, f\"{c:,}\\n({p}%)\", ha='center', weight='bold')\n",
+                    "plt.tight_layout()\n",
+                    "plt.show()\n"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 4. Pollutant Distributions & Right-Skewness\n",
+                    "Examining continuous distributions of criteria pollutants.\n"
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "cols_to_stat = [c for c in POLLUTANT_COLUMNS if c in df_labeled.columns] + ['AQI']\n",
+                    "stats_df = df_labeled[cols_to_stat].describe().T[['count', 'mean', 'std', 'min', '50%', 'max']]\n",
+                    "stats_df['skewness'] = df_labeled[cols_to_stat].skew().round(2)\n",
+                    "stats_df\n"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 5. Inter-Pollutant Correlation Heatmap\n",
+                    "Assessing linear relationships between criteria pollutants and continuous AQI.\n"
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "corr = df_labeled[cols_to_stat].corr()\n",
+                    "plt.figure(figsize=(10, 8))\n",
+                    "mask = np.triu(np.ones_like(corr, dtype=bool))\n",
+                    "sns.heatmap(corr, mask=mask, annot=True, fmt='.2f', cmap='coolwarm', square=True, vmin=-0.2, vmax=1.0)\n",
+                    "plt.title('Pearson Correlation Matrix of Criteria Pollutants & AQI', weight='bold')\n",
+                    "plt.show()\n"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 6. City-Level Disparities (26 Cities)\n",
+                    "Ranking cities by median AQI and proportion of Severe air days.\n"
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "city_summary = df_labeled.groupby('City').agg(\n",
+                    "    Median_AQI=('AQI', 'median'),\n",
+                    "    Severe_Days_Pct=('AQI_Bucket', lambda x: round((x == 'Severe').mean() * 100, 2)),\n",
+                    "    Total_Days=('AQI', 'count')\n",
+                    ").sort_values('Median_AQI', ascending=False)\n",
+                    "city_summary\n"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 7. Temporal & Seasonal Dynamics\n",
+                    "Analyzing seasonality across Winter, Summer, Monsoon, and Post-Monsoon.\n"
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "df_seasonal = extract_temporal_features(df_labeled)\n",
+                    "seasonal_aqi = df_seasonal.groupby('Season')['AQI'].agg(['median', 'mean', 'count']).reindex(['Winter', 'Summer', 'Monsoon', 'Post-Monsoon'])\n",
+                    "print(seasonal_aqi)\n",
+                    "\n",
+                    "plt.figure(figsize=(8, 5))\n",
+                    "sns.boxplot(data=df_seasonal, x='Season', y='AQI', order=['Winter', 'Summer', 'Monsoon', 'Post-Monsoon'], showfliers=False)\n",
+                    "plt.title('Seasonal AQI Variation (Winter Peak vs. Monsoon Cleansing)', weight='bold')\n",
+                    "plt.show()\n"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 8. Stratified Train / Validation / Test Splitting\n",
+                    "Preserving class distributions with zero data leakage (70% Train, 15% Val, 15% Test).\n"
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "train_df, val_df, test_df = create_stratified_split(df_labeled, target_col='AQI_Bucket', test_size=0.15, val_size=0.15, random_state=42)\n",
+                    "print(f\"Train split: {len(train_df):,} rows ({len(train_df)/len(df_labeled)*100:.1f}%)\")\n",
+                    "print(f\"Val split:   {len(val_df):,} rows ({len(val_df)/len(df_labeled)*100:.1f}%)\")\n",
+                    "print(f\"Test split:  {len(test_df):,} rows ({len(test_df)/len(df_labeled)*100:.1f}%)\")\n",
+                    "\n",
+                    "# Fit imputer on training fold ONLY\n",
+                    "imputer = fit_imputer(train_df, feature_cols=POLLUTANT_COLUMNS, group_col='City')\n",
+                    "train_imp = transform_impute(train_df, imputer)\n",
+                    "val_imp = transform_impute(val_df, imputer)\n",
+                    "test_imp = transform_impute(test_df, imputer)\n",
+                    "\n",
+                    "# Persist to data/processed/\n",
+                    "saved_files = save_processed_splits(train_imp, val_imp, test_imp, output_dir='data/processed')\n",
+                    "print('Processed splits saved successfully to:', saved_files)\n"
+                ]
+            }
+        ],
+        "metadata": {
+            "language_info": {
+                "name": "python",
+                "version": "3.11"
+            },
+            "kernelspec": {
+                "display_name": "Python 3",
+                "language": "python",
+                "name": "python3"
+            }
+        },
+        "nbformat": 4,
+        "nbformat_minor": 5
+    }
+
+    out_file = Path("notebooks/01_exploratory_data_analysis.ipynb")
+    out_file.parent.mkdir(parents=True, exist_ok=True)
+    with open(out_file, "w", encoding="utf-8") as f:
+        json.dump(nb, f, indent=1)
+    print(f"Generated notebook at: {out_file.resolve()}")
+
+if __name__ == "__main__":
+    create_notebook()
+
