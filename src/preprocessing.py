@@ -103,8 +103,8 @@ def extract_temporal_features(df: pd.DataFrame, date_col: str = "Date") -> pd.Da
     df_out["Year"] = dt.year
     df_out["Month"] = dt.month
     df_out["Day"] = dt.day
-    df_out["DayOfWeek"] = dt.dayofweek
-    df_out["IsWeekend"] = (dt.dayofweek >= 5).astype(int)
+    df_out["DayOfWeek"] = dt.day_of_week
+    df_out["IsWeekend"] = (dt.day_of_week >= 5).astype(int)
     df_out["Season"] = dt.month.map(SEASON_MAP)
 
     return df_out

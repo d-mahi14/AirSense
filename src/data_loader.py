@@ -91,9 +91,11 @@ def get_data_dir(custom_path: Optional[Union[str, Path]] = None) -> Path:
         current_dir / "data" / "raw" / "archive (3)",
         current_dir / "data" / "raw" / "archive(3)",
         current_dir / "data" / "raw",
+        current_dir / "data",
         project_root / "data" / "raw" / "archive (3)",
         project_root / "data" / "raw" / "archive(3)",
         project_root / "data" / "raw",
+        project_root / "data",
     ]
     candidates.extend(standard_relative_paths)
 
