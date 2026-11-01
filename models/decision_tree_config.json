@@ -1,85 +1,151 @@
 {
-  "model": "DecisionTreeClassifier",
+  "model": "Decision Tree",
+  "variant": "baseline",
+  "train_time_sec": 0.23170945499987283,
+  "n_train": 16645,
+  "n_val": 3784,
+  "used_n_train": 16645,
   "hyperparameters": {
-    "max_depth": 10,
-    "min_samples_split": 20,
-    "min_samples_leaf": 10,
-    "criterion": "gini",
+    "ccp_alpha": 0.0,
     "class_weight": "balanced",
+    "criterion": "gini",
+    "max_depth": 10,
+    "max_features": null,
+    "max_leaf_nodes": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 10,
+    "min_samples_split": 20,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
     "random_state": 42,
-    "ccp_alpha": 0.0
+    "splitter": "best"
   },
-  "feature_lists": {
-    "numerical": [
-      "PM2.5",
-      "PM10",
-      "NO",
-      "NO2",
-      "NOx",
-      "NH3",
-      "CO",
-      "SO2",
-      "O3",
-      "Benzene",
-      "Toluene",
-      "Xylene",
-      "Year",
-      "Month",
-      "Day",
-      "DayOfWeek",
-      "IsWeekend"
+  "val_macro_f1": 0.70676,
+  "val_accuracy": 0.719609,
+  "validation_metrics": {
+    "split": "Validation",
+    "n_samples": 3784,
+    "accuracy": 0.719609,
+    "macro_precision": 0.694709,
+    "macro_recall": 0.746989,
+    "macro_f1": 0.70676,
+    "weighted_f1": 0.726612,
+    "per_class_report": {
+      "Good": {
+        "precision": 0.45896656534954405,
+        "recall": 0.8703170028818443,
+        "f1-score": 0.6009950248756218,
+        "support": 347.0
+      },
+      "Satisfactory": {
+        "precision": 0.8265657260839642,
+        "recall": 0.7204559088182364,
+        "f1-score": 0.7698717948717949,
+        "support": 1667.0
+      },
+      "Moderate": {
+        "precision": 0.7891770011273957,
+        "recall": 0.6628787878787878,
+        "f1-score": 0.7205352547606794,
+        "support": 1056.0
+      },
+      "Poor": {
+        "precision": 0.5614035087719298,
+        "recall": 0.7044025157232704,
+        "f1-score": 0.6248256624825662,
+        "support": 318.0
+      },
+      "Very Poor": {
+        "precision": 0.73,
+        "recall": 0.6517857142857143,
+        "f1-score": 0.6886792452830188,
+        "support": 224.0
+      },
+      "Severe": {
+        "precision": 0.8021390374331551,
+        "recall": 0.872093023255814,
+        "f1-score": 0.8356545961002786,
+        "support": 172.0
+      },
+      "accuracy": 0.7196088794926004,
+      "macro avg": {
+        "precision": 0.6947086397943315,
+        "recall": 0.7469888254739444,
+        "f1-score": 0.7067602630623266,
+        "support": 3784.0
+      },
+      "weighted avg": {
+        "precision": 0.7533117354589763,
+        "recall": 0.7196088794926004,
+        "f1-score": 0.726611545151295,
+        "support": 3784.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        302,
+        43,
+        1,
+        1,
+        0,
+        0
+      ],
+      [
+        323,
+        1201,
+        141,
+        1,
+        1,
+        0
+      ],
+      [
+        20,
+        206,
+        700,
+        130,
+        0,
+        0
+      ],
+      [
+        6,
+        3,
+        42,
+        224,
+        38,
+        5
+      ],
+      [
+        3,
+        0,
+        1,
+        42,
+        146,
+        32
+      ],
+      [
+        4,
+        0,
+        2,
+        1,
+        15,
+        150
+      ]
     ],
-    "categorical": [
-      "Season"
+    "class_labels": [
+      "Good",
+      "Satisfactory",
+      "Moderate",
+      "Poor",
+      "Very Poor",
+      "Severe"
     ],
-    "all": [
-      "PM2.5",
-      "PM10",
-      "NO",
-      "NO2",
-      "NOx",
-      "NH3",
-      "CO",
-      "SO2",
-      "O3",
-      "Benzene",
-      "Toluene",
-      "Xylene",
-      "Year",
-      "Month",
-      "Day",
-      "DayOfWeek",
-      "IsWeekend",
-      "Season"
-    ]
+    "inference_time_sec": 0.006704,
+    "inference_runs_sec": [
+      0.006704490999709378,
+      0.00769897200007108,
+      0.004755497000132891
+    ],
+    "inference_ms_per_row": 0.0017716701902748414
   },
-  "feature_names_out": [
-    "numerical__PM2.5",
-    "numerical__PM10",
-    "numerical__NO",
-    "numerical__NO2",
-    "numerical__NOx",
-    "numerical__NH3",
-    "numerical__CO",
-    "numerical__SO2",
-    "numerical__O3",
-    "numerical__Benzene",
-    "numerical__Toluene",
-    "numerical__Xylene",
-    "numerical__Year",
-    "numerical__Month",
-    "numerical__Day",
-    "numerical__DayOfWeek",
-    "numerical__IsWeekend",
-    "categorical__Season"
-  ],
-  "train_time_sec": 0.2588,
-  "n_train": 17394,
-  "n_val": 3728,
-  "n_test": 3728,
-  "train_accuracy": 0.7892376681614349,
-  "val_accuracy": 0.7465128755364807,
-  "test_accuracy": 0.7454399141630901,
-  "val_macro_f1": 0.7300818764885918,
-  "test_macro_f1": 0.7300727885174562
+  "model_sha256": "75e083a359fc45218be0c8254238fbeaa52f90db95acf16fda66497c3d2147d5"
 }

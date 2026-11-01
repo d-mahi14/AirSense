@@ -165,11 +165,27 @@ def audit_data_split(
             "test_range": (str(test_df[date_col].min()), str(test_df[date_col].max()))
         }
 
+    # Reset row indices are not record identities. Check real city/date keys.
+    overlap_check = {"checked": False, "reason": "City and Date are required for identity checking"}
+    if all("City" in part.columns and "Date" in part.columns for part in [train_df, val_df, test_df]):
+        def record_keys(part):
+            dates = pd.to_datetime(part["Date"], errors="raise").dt.normalize()
+            if part["City"].isna().any() or dates.isna().any():
+                raise ValueError("Cannot audit split identity with missing City or Date")
+            return set(zip(part["City"].astype(str), dates))
+        train_keys, val_keys, test_keys = map(record_keys, [train_df, val_df, test_df])
+        counts = {"train_validation": len(train_keys & val_keys),
+                  "train_test": len(train_keys & test_keys),
+                  "validation_test": len(val_keys & test_keys)}
+        overlap_check = {"checked": True, "identity_columns": ["City", "Date"],
+                         "overlap_counts": counts, "disjoint": not any(counts.values())}
+
     return {
         "n_train": n_train,
         "n_val": n_val,
         "n_test": n_test,
         "n_total": n_total,
+        "overlap_check": overlap_check,
         "train_pct": round((n_train / n_total) * 100, 2) if n_total > 0 else 0.0,
         "val_pct": round((n_val / n_total) * 100, 2) if n_total > 0 else 0.0,
         "test_pct": round((n_test / n_total) * 100, 2) if n_total > 0 else 0.0,

@@ -1,0 +1,24 @@
+{
+  "scope": "Prompt 13 only",
+  "full_test_suite_passed": 151,
+  "new_prompt13_tests_passed": 29,
+  "prediction_candidates_verified": 8,
+  "pages_verified": 5,
+  "previous_files_preserved_byte_identical": 140,
+  "models_or_experiments_retrained": false,
+  "local_http_checks": {
+    "health_http_status": 200,
+    "health_body": "ok",
+    "app_http_status": 200,
+    "app_html_received": true
+  },
+  "versions": {
+    "streamlit": "1.66.1",
+    "altair": "6.3.0",
+    "scikit-learn": "1.8.0",
+    "xgboost": "3.4.1",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3"
+  },
+  "browser_layout_screenshot_check": "Not performed: browser binary download unavailable; AppTest interaction checks and live HTTP checks completed."
+}

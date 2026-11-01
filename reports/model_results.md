@@ -1,3 +1,5 @@
+> **HISTORICAL / SUPERSEDED:** The material below describes the earlier random-split experiment and is preserved as user work. It is not the final submission result. Use `final_results.csv`, `evaluation_results.json`, `model_comparison.md` and `research_paper.pdf` for the verified chronological experiment. The original file is also preserved in `reports/archive/pre_final_audit/`.
+
 # AirSense — Empirical Model Results & Comparative Evaluation
 
 **Project:** AirSense — Ambient Air Quality Classification Using Machine Learning  

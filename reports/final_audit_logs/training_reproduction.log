@@ -1,0 +1,4 @@
+decision_tree validation macro F1 0.70676
+random_forest validation macro F1 0.774868
+svm validation macro F1 0.666401
+xgboost validation macro F1 0.766091

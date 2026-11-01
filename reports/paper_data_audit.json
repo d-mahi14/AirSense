@@ -1,0 +1,242 @@
+{
+  "source_sha256": "0d84b21c3e4878bbad8df362f2ab05f61ad959538dddf5918e714077ed3c1847",
+  "raw_rows": 29531,
+  "columns": 16,
+  "cities": 26,
+  "date_start": "2015-01-01",
+  "date_end": "2020-07-01",
+  "labeled": 24850,
+  "unlabeled": 4681,
+  "duplicate_city_dates": 0,
+  "complete_feature_labeled": 6236,
+  "splits": {
+    "Train": {
+      "n": 16645,
+      "cities": 20,
+      "date_start": "2015-01-01",
+      "date_end": "2019-06-30",
+      "class_counts": {
+        "Good": 465,
+        "Satisfactory": 4609,
+        "Moderate": 6288,
+        "Poor": 2176,
+        "Very Poor": 1979,
+        "Severe": 1128
+      }
+    },
+    "Validation": {
+      "n": 3784,
+      "cities": 23,
+      "date_start": "2019-07-01",
+      "date_end": "2019-12-31",
+      "class_counts": {
+        "Good": 347,
+        "Satisfactory": 1667,
+        "Moderate": 1056,
+        "Poor": 318,
+        "Very Poor": 224,
+        "Severe": 172
+      }
+    },
+    "Test": {
+      "n": 4421,
+      "cities": 26,
+      "date_start": "2020-01-01",
+      "date_end": "2020-07-01",
+      "class_counts": {
+        "Good": 529,
+        "Satisfactory": 1948,
+        "Moderate": 1485,
+        "Poor": 287,
+        "Very Poor": 134,
+        "Severe": 38
+      }
+    }
+  },
+  "features": {
+    "PM2.5": {
+      "missing_labeled_percent": 2.728370221327968,
+      "missing_train_percent": 3.35836587563833
+    },
+    "PM10": {
+      "missing_labeled_percent": 28.515090543259557,
+      "missing_train_percent": 38.66025833583659
+    },
+    "NO": {
+      "missing_labeled_percent": 1.557344064386318,
+      "missing_train_percent": 1.4478822469209973
+    },
+    "NO2": {
+      "missing_labeled_percent": 1.573440643863179,
+      "missing_train_percent": 1.3998197656954041
+    },
+    "NOx": {
+      "missing_labeled_percent": 7.472837022132797,
+      "missing_train_percent": 9.035746470411535
+    },
+    "NH3": {
+      "missing_labeled_percent": 26.301810865191143,
+      "missing_train_percent": 33.217182337038146
+    },
+    "CO": {
+      "missing_labeled_percent": 1.790744466800805,
+      "missing_train_percent": 1.4238510063082006
+    },
+    "SO2": {
+      "missing_labeled_percent": 2.4346076458752517,
+      "missing_train_percent": 2.943826975067588
+    },
+    "O3": {
+      "missing_labeled_percent": 3.24748490945674,
+      "missing_train_percent": 3.106037849203965
+    },
+    "Benzene": {
+      "missing_labeled_percent": 14.225352112676056,
+      "missing_train_percent": 14.046260138179633
+    },
+    "Toluene": {
+      "missing_labeled_percent": 23.44466800804829,
+      "missing_train_percent": 20.895163712826676
+    },
+    "Xylene": {
+      "missing_labeled_percent": 61.859154929577464,
+      "missing_train_percent": 62.91378792430159
+    }
+  },
+  "test_cities_absent_in_training": [
+    "Aizawl",
+    "Bhopal",
+    "Chandigarh",
+    "Ernakulam",
+    "Kochi",
+    "Shillong"
+  ],
+  "test_new_city_rows": 919,
+  "aqi_range_labeled": [
+    13.0,
+    2049.0
+  ],
+  "aqi_label_disagreements": 0,
+  "cv_full": [
+    {
+      "fold": 1,
+      "train_n": 3757,
+      "validation_n": 2628,
+      "train_end": "2016-10-10",
+      "val_start": "2016-10-18",
+      "val_end": "2017-09-11"
+    },
+    {
+      "fold": 2,
+      "train_n": 6377,
+      "validation_n": 4525,
+      "train_end": "2017-09-04",
+      "val_start": "2017-09-12",
+      "val_end": "2018-08-06"
+    },
+    {
+      "fold": 3,
+      "train_n": 10842,
+      "validation_n": 5680,
+      "train_end": "2018-07-30",
+      "val_start": "2018-08-07",
+      "val_end": "2019-06-30"
+    }
+  ],
+  "cv_svm": [
+    {
+      "fold": 1,
+      "train_n": 1465,
+      "validation_n": 948,
+      "train_end": "2016-11-24",
+      "val_start": "2016-12-02",
+      "val_end": "2017-10-17"
+    },
+    {
+      "fold": 2,
+      "train_n": 2417,
+      "validation_n": 1628,
+      "train_end": "2017-10-10",
+      "val_start": "2017-10-18",
+      "val_end": "2018-08-25"
+    },
+    {
+      "fold": 3,
+      "train_n": 4014,
+      "validation_n": 1941,
+      "train_end": "2018-08-18",
+      "val_start": "2018-08-26",
+      "val_end": "2019-06-30"
+    }
+  ],
+  "numeric_clipping_bounds": {
+    "PM2.5": [
+      9.991,
+      341.56649999999985
+    ],
+    "PM10": [
+      21.363599999999998,
+      472.88049999999976
+    ],
+    "NO": [
+      1.01,
+      120.77639999999992
+    ],
+    "NO2": [
+      3.1211,
+      122.44729999999967
+    ],
+    "NOx": [
+      0.0,
+      161.53800000000004
+    ],
+    "NH3": [
+      1.73,
+      161.59200000000018
+    ],
+    "CO": [
+      0.0,
+      40.28510000000002
+    ],
+    "SO2": [
+      1.3853999999999997,
+      101.20899999999988
+    ],
+    "O3": [
+      3.71,
+      112.29949999999994
+    ],
+    "Benzene": [
+      0.0,
+      21.26640000000003
+    ],
+    "Toluene": [
+      0.0,
+      75.5912000000001
+    ],
+    "Xylene": [
+      0.0,
+      26.96359999999997
+    ],
+    "Year": [
+      2015.0,
+      2019.0
+    ],
+    "Month": [
+      1.0,
+      12.0
+    ],
+    "Day": [
+      1.0,
+      31.0
+    ],
+    "DayOfWeek": [
+      0.0,
+      6.0
+    ],
+    "IsWeekend": [
+      0.0,
+      1.0
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "candidate_count": 8,
+  "test_rows": 4421,
+  "actual_metrics_recomputed": true,
+  "model_hashes_verified": true,
+  "selection_verified_from_validation": true,
+  "pdf_pages": 17,
+  "pdf_opens": true,
+  "expected_sections_found": 17,
+  "figures": 8,
+  "tables": 13,
+  "paper_sha256": "4edbbddba9e407258b349b1be0d4088eb16a22e8db42db949fb038793d895a83",
+  "markdown_written_before_pdf": true,
+  "prior_project_files_preserved": 150,
+  "full_test_suite_passed": 156,
+  "new_prompt14_tests_passed": 5,
+  "requested_items_including_title": 18,
+  "rendered_pages_visually_reviewed": 17,
+  "text_outside_expected_page_bounds": 0,
+  "standalone_pdf_saved": true
+}

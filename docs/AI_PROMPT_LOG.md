@@ -402,3 +402,84 @@ Explain what this problem is and help me fix it: Cannot find module `pytest`
 2. Verified that the AirSense project dependencies are installed in Python 3.11 (`C:\Users\Admin\AppData\Local\Programs\Python\Python311\python.exe`), which has `pytest 8.3.5`.
 3. Created `.vscode/settings.json` configuring `python.defaultInterpreterPath` to point to Python 3.11.
 4. Documented the resolution for the user.
+
+---
+
+## Prompt 15 — Final Testing, Documentation, and Submission (1 November 2026)
+
+### User task (requirements recorded; formatting condensed)
+
+Perform a complete final audit of AirSense.
+
+Project directory: `C:\dev\AirSense\`
+Dataset directory: `data/raw/archive(3)/`
+Primary research paper: Méndez et al. (2023), DOI 10.1007/s10462-023-10424-4.
+
+Inspect the actual source code, dataset handling, preprocessing, trained models,
+evaluation outputs, dashboard, tests, and report.
+
+CHECK THE FOLLOWING:
+1. All five original CSV files remain unchanged.
+2. Dataset paths work on Windows.
+3. The selected CSV and target are documented.
+4. No weather features have been fabricated.
+5. No target leakage is evident.
+6. Train, validation, and test partitions are correctly separated.
+7. All four models train or have documented, reproducible failures.
+8. All reported metrics come from actual predictions.
+9. All model comparisons use the same test observations.
+10. The selected model is evaluated without test-set tuning.
+11. Prediction uses the same fitted preprocessing as training.
+12. The dashboard handles invalid inputs and missing artifacts.
+13. The literature review cites the primary research paper correctly.
+14. Tables and graphs match the actual experiment outputs.
+15. The report discusses limitations and research methodology.
+16. requirements.txt contains the required dependencies.
+17. README.md contains clear Windows setup instructions.
+18. Tests cover loading, preprocessing, training, evaluation, and prediction where feasible.
+
+Create or update reports/final_project_report.md, reports/final_results.csv,
+reports/limitations_and_future_work.md, reports/final_checklist.md, README.md and tests/.
+Generate the final PDF report if it has not already been created. Include PowerShell
+commands for creating/activating a virtual environment, installing dependencies,
+running tests, training models and running Streamlit. Record exact commands and
+actual test outcomes. Do not claim unexecuted tests passed or change results to look
+better. Do not delete existing work. Do not push, publish, configure a remote, change
+branches or rewrite Git history. Finish with structure, files, actual model/test
+results, limitations, application commands and remaining manual tasks. Update all
+three project logs. Wait for user review before any further changes.
+
+### Scope interpretation and evidence
+
+The target Windows directory is the user's intended installation location; execution
+here uses the local Linux workspace. No Windows execution claim is made. The supplied
+raw folder has a space (`archive (3)`), while the requested path omits it; both existing
+loader aliases are tested and documented without renaming or duplicating raw data.
+The existing research PDF is retained and revalidated. Final results are derived from
+the frozen chronological experiment, not the superseded random-split artifacts.
+
+### Earlier prompts 11-14 (retrospective conversation summary)
+
+- Prompts 11-12 corrected chronology, fold-local tuning, validation-based selection,
+  timing consistency and feature-analysis provenance; actual experiment artifacts are retained.
+- Prompt 13 supplied a cached, read-only Streamlit application with actual outputs;
+  its recorded suite contained 151 passing tests.
+- Prompt 14 supplied a 17-page research-style paper, eight figures, 13 tables and
+  verified references; its recorded suite contained 156 passing tests.
+- These are historical run counts, not a claim that those commands were repeated
+  under their old environments during prompt 15. Prompt 15's actual commands and
+  outcomes are recorded separately in reports/final_audit_commands.md.
+
+### Recorded prompt 15 outcome
+
+Full latest suite: 164 passed in 20.32s (exit 0). Artifact/deep feature audit passed; four full-data baselines reproduced in temporary storage without altering the submitted models. Dependency check passed and local Streamlit health/app returned HTTP 200. All requested final files were created; Windows execution, visual browser review and authorship remain manual. The project is now awaiting user review.
+
+
+## Windows follow-up correction (1 November 2026)
+
+User Windows run: 161 passed, 3 failed. Matching pinned versions ruled out a
+simple dependency mismatch. Added native XGBoost JSON bundles and a shared
+checksum-verified loader, without retraining or altering model scores. See
+reports/windows_portability_fix.md (or windows_portability_fix.md within reports).
+Earlier 164-test counts are historical Linux results; Windows confirmation of
+this correction remains pending.

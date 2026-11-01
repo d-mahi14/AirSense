@@ -1,0 +1,104 @@
+{
+  "audit_time_ist": "2026-11-01T21:31:07.317161+05:30",
+  "raw_files": [
+    {
+      "file": "stations.csv",
+      "bytes": 14467,
+      "sha256": "ce2b7081c3e3c89145613eb724d7d2149ef79c6e16f36bb8a835747a673ed410",
+      "unchanged_from_uploaded_original": true
+    },
+    {
+      "file": "city_day.csv",
+      "bytes": 2574056,
+      "sha256": "0d84b21c3e4878bbad8df362f2ab05f61ad959538dddf5918e714077ed3c1847",
+      "unchanged_from_uploaded_original": true
+    },
+    {
+      "file": "city_hour.csv",
+      "bytes": 65648581,
+      "sha256": "fae474062ec6b10af7c5b2ac4e32f5c240a0ef80835ee3a50332fec06e2190a4",
+      "unchanged_from_uploaded_original": true
+    },
+    {
+      "file": "station_day.csv",
+      "bytes": 8634105,
+      "sha256": "f07787eb4c36c53b07763f591ee29fa01fbaa4d18df1a470447d04def79677b9",
+      "unchanged_from_uploaded_original": true
+    },
+    {
+      "file": "station_hour.csv",
+      "bytes": 219675434,
+      "sha256": "26a423c66fe9763064d580ffb007150375cfa2056e62b29d52b1b7857af54fde",
+      "unchanged_from_uploaded_original": true
+    }
+  ],
+  "execution_platform": "Linux / Python local runtime; Windows commands supplied but not executed on Windows",
+  "runtime_environment": {
+    "protocol": "chronological-v2",
+    "dataset_sha256": "0d84b21c3e4878bbad8df362f2ab05f61ad959538dddf5918e714077ed3c1847",
+    "train_end": "2019-06-30",
+    "validation_end": "2019-12-31",
+    "seed": 42,
+    "python": "3.12.10",
+    "sklearn": "1.8.0",
+    "xgboost": "3.4.1"
+  },
+  "training_environment": {
+    "protocol": "chronological-v2",
+    "dataset_sha256": "0d84b21c3e4878bbad8df362f2ab05f61ad959538dddf5918e714077ed3c1847",
+    "train_end": "2019-06-30",
+    "validation_end": "2019-12-31",
+    "seed": 42,
+    "python": "3.12.14",
+    "sklearn": "1.8.0",
+    "xgboost": "3.4.1"
+  },
+  "partitions": {
+    "train": {
+      "n": 16645,
+      "start": "2015-01-01",
+      "end": "2019-06-30"
+    },
+    "validation": {
+      "n": 3784,
+      "start": "2019-07-01",
+      "end": "2019-12-31"
+    },
+    "test": {
+      "n": 4421,
+      "start": "2020-01-01",
+      "end": "2020-07-01"
+    }
+  },
+  "partitions_disjoint": true,
+  "temporal_cv_gap_verified": true,
+  "selected_candidate": "random_forest",
+  "all_eight_current_predictions_reproduced": true,
+  "training_only_preprocessing_reconstructed": true,
+  "saved_hyperparameters_and_cv_results_verified": true,
+  "no_target_or_weather_features": true,
+  "all_model_hashes_verified": true,
+  "comparison_csvs_match_saved_outputs": true,
+  "features": {
+    "models": {
+      "random_forest": {
+        "built_in_importance_matches_saved": true,
+        "permutation_recomputed_and_matches": true
+      },
+      "xgboost": {
+        "built_in_importance_matches_saved": true,
+        "permutation_recomputed_and_matches": true
+      }
+    },
+    "saved_shap_values_match_report": true,
+    "shap_shape": [
+      120,
+      18,
+      6
+    ],
+    "shap_explainer_not_rerun": "Saved per-sample SHAP attributions verified; full TreeSHAP computation was not repeated."
+  },
+  "existing_research_pdf_sha256": "4edbbddba9e407258b349b1be0d4088eb16a22e8db42db949fb038793d895a83",
+  "research_pdf_pages": 17,
+  "status": "passed"
+}

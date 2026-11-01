@@ -1,0 +1,50 @@
+{
+  "experiment": {
+    "protocol": "chronological-v2",
+    "dataset_sha256": "0d84b21c3e4878bbad8df362f2ab05f61ad959538dddf5918e714077ed3c1847",
+    "train_end": "2019-06-30",
+    "validation_end": "2019-12-31",
+    "seed": 42,
+    "python": "3.12.14",
+    "sklearn": "1.8.0",
+    "xgboost": "3.4.1"
+  },
+  "created_utc": "2026-11-01T13:15:10.475674+00:00",
+  "criterion": "Highest validation macro F1 across baseline and tuned candidates; identifier breaks ties",
+  "selected_candidate": "random_forest",
+  "candidates": {
+    "decision_tree": {
+      "validation_macro_f1": 0.70676,
+      "model_sha256": "75e083a359fc45218be0c8254238fbeaa52f90db95acf16fda66497c3d2147d5"
+    },
+    "random_forest": {
+      "validation_macro_f1": 0.774868,
+      "model_sha256": "69f87a15f2c5d5d9eccf398c4599e60451e4c7764b12931294a1b8e0f06eac8f"
+    },
+    "svm": {
+      "validation_macro_f1": 0.666401,
+      "model_sha256": "1729eb6cf3153a27e1206f58f3246fe89e5d0d2f90fbf01a877e2df60461fcb8"
+    },
+    "xgboost": {
+      "validation_macro_f1": 0.766091,
+      "model_sha256": "39cb6402bf5baebb09db8b04f255e89403827d54799c640395b6c269b8dfdbdf"
+    },
+    "tuned_decision_tree": {
+      "validation_macro_f1": 0.716606,
+      "model_sha256": "9b98b823fc135456f67b0cc620006d8b6a33981e76c45a924a0bcfd218265f3c"
+    },
+    "tuned_random_forest": {
+      "validation_macro_f1": 0.77366,
+      "model_sha256": "b232c7fad9eb8861de62b03fa5a5a8a7317078366f2f607582109342e1ac8471"
+    },
+    "tuned_svm": {
+      "validation_macro_f1": 0.660938,
+      "model_sha256": "dc1540062acd459e5e0118123375c3f46f43189736c4c7bfef6f6c0b8182fed0"
+    },
+    "tuned_xgboost": {
+      "validation_macro_f1": 0.761736,
+      "model_sha256": "9612276d16923543e1f9ab780634c289a6f4f1959eb6cdbfc365919550a63d7b"
+    }
+  },
+  "historical_test_exposure": "The uploaded project and the earlier audit had already inspected test outcomes. This corrected rerun is a retrospective benchmark, not a pristine prospective holdout. No test scores are used by the corrected selection/tuning code. New external data is required for an independent final claim."
+}

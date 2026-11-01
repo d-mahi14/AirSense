@@ -1,0 +1,8 @@
+{
+  "format": "airsense-xgboost-json-v1",
+  "source_sha256": "9612276d16923543e1f9ab780634c289a6f4f1959eb6cdbfc365919550a63d7b",
+  "files": {
+    "tuned_xgboost.trees.json": "307df3bb3fd1a78d99eb9c400f91fdc00ef901918948479ccbfdf41191bf14ff",
+    "tuned_xgboost.portable.joblib": "e30acd7bc0f5629e8b749fb642d4dbb1111c5ebea692945416514398f054bd4b"
+  }
+}

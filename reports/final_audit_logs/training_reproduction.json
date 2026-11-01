@@ -1,0 +1,35 @@
+{
+  "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -u -m scripts.final_audit --verify-training --deep-features",
+  "audit_time_ist": "2026-11-01T20:27:10.750475+05:30",
+  "results": {
+    "decision_tree": {
+      "full_training_rows": 16645,
+      "validation_rows": 3784,
+      "validation_macro_f1": 0.70676,
+      "reproduced_fit_time_sec": 0.2652966189998551,
+      "validation_confusion_matches_saved": true
+    },
+    "random_forest": {
+      "full_training_rows": 16645,
+      "validation_rows": 3784,
+      "validation_macro_f1": 0.774868,
+      "reproduced_fit_time_sec": 5.111516965000192,
+      "validation_confusion_matches_saved": true
+    },
+    "svm": {
+      "full_training_rows": 16645,
+      "validation_rows": 3784,
+      "validation_macro_f1": 0.666401,
+      "reproduced_fit_time_sec": 7.197426913999152,
+      "validation_confusion_matches_saved": true
+    },
+    "xgboost": {
+      "full_training_rows": 16645,
+      "validation_rows": 3784,
+      "validation_macro_f1": 0.766091,
+      "reproduced_fit_time_sec": 6.660883194999769,
+      "validation_confusion_matches_saved": true
+    }
+  },
+  "submitted_models_preserved": true
+}

@@ -276,3 +276,41 @@ This log records every implementation stage, files created or modified, commands
 - **Issue:** The editor / language server reported `Cannot find module pytest` on `tests/test_target_definition.py:L10`.
 - **Root Cause:** The IDE defaulted to Windows Store Python 3.13 (`C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13...`) where `pytest` is not installed, whereas the project dependencies (`pytest 8.3.5`, `numpy`, `pandas`, `scipy`, `matplotlib`, `seaborn`) are installed in Python 3.11 (`C:\Users\Admin\AppData\Local\Programs\Python\Python311\python.exe`).
 - **Resolution:** Created `.vscode/settings.json` specifying `"python.defaultInterpreterPath": "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python311\\python.exe"`. Verified that tests run and pass cleanly using Python 3.11.
+
+
+---
+
+## Prompt 15: Final audit and submission handoff
+
+Recorded (IST): 2026-11-01T20:41:59.815133+05:30. Scope: complete local audit and requested submission documents.
+
+- All five original raw files matched the original upload by SHA-256 and byte size.
+  Both folder spellings and spaces/environment overrides have test coverage; actual
+  target-machine Windows execution remains manual.
+- All eight models reproduced saved validation/test predictions. Training-only numeric
+  transformations, saved hyperparameters and CV records were checked independently.
+- Four baselines were fully retrained in isolated temporary storage; validation
+  confusion matrices matched the submission and original model hashes stayed unchanged.
+- Actual comparison metrics/timings were preserved. Built-in importance, saved SHAP
+  aggregation and freshly recomputed validation permutation importance agreed.
+- Preserved and repaired the dangerous legacy run entry point, archived obsolete
+  compatibility results, labelled historical reports and fixed the generic split audit.
+- Updated README/dependencies, added final submission tests and generated all requested
+  final reports, checklist/results and command ledger. Reused and verified the existing
+  17-page research PDF; no model/report regeneration was needed to improve scores.
+- Actual final full test outcome: 164 passed in 20.32s, exit 0.
+  pip check: no broken requirements. Streamlit health/app: HTTP 200.
+- Commands and raw logs: reports/final_audit_commands.md and final_audit_logs/.
+  Normal overwrite-training CLI commands are documentation, not execution claims.
+- No Git, push, publish, remote, branch or history action was performed. Awaiting
+  user review; Windows/browser layout/authorship and scientific confirmation remain manual.
+
+
+## Windows follow-up correction (1 November 2026)
+
+User Windows run: 161 passed, 3 failed. Matching pinned versions ruled out a
+simple dependency mismatch. Added native XGBoost JSON bundles and a shared
+checksum-verified loader, without retraining or altering model scores. See
+reports/windows_portability_fix.md (or windows_portability_fix.md within reports).
+Earlier 164-test counts are historical Linux results; Windows confirmation of
+this correction remains pending.

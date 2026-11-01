@@ -1,0 +1,30 @@
+{
+  "reference": "Original user-uploaded AirSense.zip, before this conversation edits; this does not certify pre-upload provenance",
+  "files": [
+    {
+      "filename": "city_day.csv",
+      "size_bytes": 2574056,
+      "sha256": "0d84b21c3e4878bbad8df362f2ab05f61ad959538dddf5918e714077ed3c1847"
+    },
+    {
+      "filename": "city_hour.csv",
+      "size_bytes": 65648581,
+      "sha256": "fae474062ec6b10af7c5b2ac4e32f5c240a0ef80835ee3a50332fec06e2190a4"
+    },
+    {
+      "filename": "station_day.csv",
+      "size_bytes": 8634105,
+      "sha256": "f07787eb4c36c53b07763f591ee29fa01fbaa4d18df1a470447d04def79677b9"
+    },
+    {
+      "filename": "station_hour.csv",
+      "size_bytes": 219675434,
+      "sha256": "26a423c66fe9763064d580ffb007150375cfa2056e62b29d52b1b7857af54fde"
+    },
+    {
+      "filename": "stations.csv",
+      "size_bytes": 14467,
+      "sha256": "ce2b7081c3e3c89145613eb724d7d2149ef79c6e16f36bb8a835747a673ed410"
+    }
+  ]
+}

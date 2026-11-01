@@ -121,3 +121,44 @@ This log records any errors, warnings, unexpected dataset characteristics, tool 
   2. Windows Store Python 3.13 (`C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13...`) with zero third-party packages.
   The editor automatically picked Python 3.13, causing import resolution warnings.
 - **Resolution:** Added `.vscode/settings.json` specifying `"python.defaultInterpreterPath": "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python311\\python.exe"`.
+
+
+---
+
+## Prompt 15: Audit findings and unresolved limits (2026-11-01T20:41:59.815133+05:30)
+
+1. **Legacy runner bypassed the corrected protocol.** Its old module executed the
+   random-split experiment at import time, set a misleading data-directory override
+   and could overwrite current models. Original preserved; active file now has a
+   main guard and calls corrected stages in order. Import safety/order tests pass.
+2. **Legacy result disagreement.** models/all_results.json and model_results.md
+   described older scores. Originals preserved. Compatibility export now derives
+   from actual current outputs; the report is labelled historical. No submitted
+   evaluation values or timing measurements were changed to look better.
+3. **Split-audit documentation exceeded behavior.** The generic helper claimed
+   overlap checks but omitted them. It now audits City-Date identities; an intentional
+   reset-index overlap test demonstrates detection. The main chronological experiment
+   already had disjoint identities and did not require changing its results.
+4. **Folder spelling mismatch.** User requested archive(3); supplied archive (3).
+   Both resolve and are tested/documented. No raw data was moved, copied or edited.
+5. **Remaining environment limits.** Windows execution and browser visual layout
+   are not verified here. AppTest and live HTTP checks passed; no browser-layout
+   pass is invented. Paper authorship/affiliation still needs user confirmation.
+6. **Scientific limits remain.** Historical test exposure cannot be undone by code
+   fixes. Mixed city/time shifts, rare-class support, missingness/units/extremes,
+   calendar clipping, absent weather and uncalibrated probabilities remain disclosed.
+
+Final executed suite: 164 passed in 20.32s. No observed final test or
+artifact-check failure is concealed. Full tuning/TreeSHAP was not rerun, and those
+unexecuted repetitions are not recorded as passes. No further changes after handoff
+without user review.
+
+
+## Windows follow-up correction (1 November 2026)
+
+User Windows run: 161 passed, 3 failed. Matching pinned versions ruled out a
+simple dependency mismatch. Added native XGBoost JSON bundles and a shared
+checksum-verified loader, without retraining or altering model scores. See
+reports/windows_portability_fix.md (or windows_portability_fix.md within reports).
+Earlier 164-test counts are historical Linux results; Windows confirmation of
+this correction remains pending.

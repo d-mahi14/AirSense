@@ -1,0 +1,12 @@
+{
+  "tests_passed": 122,
+  "evaluated_candidates": 8,
+  "shared_test_rows": 4421,
+  "all_metrics_recomputed_from_saved_predictions": true,
+  "all_model_hashes_verified": true,
+  "dataset_files_unchanged": true,
+  "dashboard_and_other_prompt_code_unchanged": true,
+  "shap_status": "completed",
+  "selected_candidate": "random_forest",
+  "historical_test_exposure": "The uploaded project and the earlier audit had already inspected test outcomes. This corrected rerun is a retrospective benchmark, not a pristine prospective holdout. No test scores are used by the corrected selection/tuning code. New external data is required for an independent final claim."
+}

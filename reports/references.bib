@@ -1,93 +1,80 @@
 @article{mendez2023survey,
-  author    = {M{\'e}ndez, Manuel and Merayo, Mercedes G. and N{\'u}{\~n}ez, Manuel},
-  title     = {Machine learning algorithms to forecast air quality: a survey},
-  journal   = {Artificial Intelligence Review},
-  volume    = {56},
-  number    = {9},
-  pages     = {10031--10066},
-  year      = {2023},
-  publisher = {Springer Nature},
-  doi       = {10.1007/s10462-023-10424-4}
+  author = {M{\'e}ndez, Manuel and Merayo, Mercedes G. and N{\'u}{\~n}ez, Manuel},
+  title = {Machine learning algorithms to forecast air quality: a survey},
+  journal = {Artificial Intelligence Review},
+  year = {2023},
+  volume = {56},
+  pages = {10031--10066},
+  doi = {10.1007/s10462-023-10424-4},
+  url = {https://link.springer.com/article/10.1007/s10462-023-10424-4},
+  note = {Publisher and 36-page full paper verified 2026-11-01; online publication 2023-02-16}
 }
 
-@techreport{cpcb2014naqi,
-  author      = {{Central Pollution Control Board}},
-  title       = {National Air Quality Index Report},
-  institution = {Ministry of Environment, Forest and Climate Change, Government of India},
-  address     = {New Delhi, India},
-  year        = {2014},
-  url         = {https://cpcb.nic.in}
+@techreport{cpcb2014aqi,
+  author = {{Central Pollution Control Board}},
+  title = {National Air Quality Index},
+  institution = {Central Pollution Control Board},
+  year = {2014},
+  month = {October},
+  number = {CUPS/82/2014-15},
+  url = {https://www.airquality.cpcb.gov.in/ccr_docs/FINAL-REPORT_AQI_.pdf},
+  note = {AQI categories cross-checked with official CPCB AQI portal, 2026-11-01}
 }
 
-@misc{rao2020india_air,
-  author       = {Rohan Rao},
-  title        = {Air Quality Data in India (2015--2020)},
-  howpublished = {Kaggle Dataset},
-  year         = {2020},
-  url          = {https://www.kaggle.com/datasets/rohanrao/air-quality-data-in-india}
+@misc{rao_air_quality_india,
+  author = {Rao, Rohan},
+  title = {Air Quality Data in India (2015--2020)},
+  howpublished = {Kaggle dataset},
+  url = {https://www.kaggle.com/datasets/rohanrao/air-quality-data-in-india},
+  note = {Accessed 2026-11-01; supplied local CSV statistics audited; release year not asserted}
 }
 
-@article{breiman2001random,
-  author    = {Breiman, Leo},
-  title     = {Random Forests},
-  journal   = {Machine Learning},
-  volume    = {45},
-  number    = {1},
-  pages     = {5--32},
-  year      = {2001},
-  publisher = {Springer},
-  doi       = {10.1023/A:1010933404324}
+@misc{sklearn18docs,
+  author = {{scikit-learn developers}},
+  title = {Decision Trees; Metrics and scoring; Permutation feature importance},
+  howpublished = {scikit-learn 1.8 documentation},
+  url = {https://scikit-learn.org/1.8/modules/model_evaluation.html},
+  note = {Also tree.html and permutation_importance.html in the same versioned documentation; verified 2026-11-01}
 }
 
-@article{cortes1995support,
-  author    = {Cortes, Corinna and Vapnik, Vladimir},
-  title     = {Support-Vector Networks},
-  journal   = {Machine Learning},
-  volume    = {20},
-  number    = {3},
-  pages     = {273--297},
-  year      = {1995},
-  publisher = {Springer},
-  doi       = {10.1007/BF00994018}
+@article{breiman2001forests,
+  author = {Breiman, Leo},
+  title = {Random Forests},
+  journal = {Machine Learning},
+  year = {2001},
+  volume = {45},
+  pages = {5--32},
+  doi = {10.1023/A:1010933404324}
 }
 
-@inproceedings{chen2016xgboost,
-  author    = {Chen, Tianqi and Guestrin, Carlos},
-  title     = {{XGBoost}: A Scalable Tree Boosting System},
-  booktitle = {Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
-  pages     = {785--794},
-  year      = {2016},
-  publisher = {ACM},
-  doi       = {10.1145/2939672.2939785}
+@article{cortes1995svm,
+  author = {Cortes, Corinna and Vapnik, Vladimir},
+  title = {Support-vector networks},
+  journal = {Machine Learning},
+  year = {1995},
+  volume = {20},
+  pages = {273--297},
+  doi = {10.1007/BF00994018}
 }
 
-@article{quinlan1986induction,
-  author    = {Quinlan, J. Ross},
-  title     = {Induction of Decision Trees},
-  journal   = {Machine Learning},
-  volume    = {1},
-  number    = {1},
-  pages     = {81--106},
-  year      = {1986},
-  publisher = {Springer},
-  doi       = {10.1007/BF00116251}
+@misc{chen2016xgboost,
+  author = {Chen, Tianqi and Guestrin, Carlos},
+  title = {XGBoost: A Scalable Tree Boosting System},
+  year = {2016},
+  eprint = {1603.02754},
+  archivePrefix = {arXiv},
+  doi = {10.48550/arXiv.1603.02754},
+  url = {https://arxiv.org/abs/1603.02754},
+  note = {Verified author preprint, version 3}
 }
 
-@inproceedings{lundberg2017unified,
-  author    = {Lundberg, Scott M. and Lee, Su-In},
-  title     = {A Unified Approach to Interpreting Model Predictions},
-  booktitle = {Advances in Neural Information Processing Systems (NeurIPS 2017)},
-  volume    = {30},
-  pages     = {4765--4774},
-  year      = {2017}
+@misc{lundberg2017shap,
+  author = {Lundberg, Scott M. and Lee, Su-In},
+  title = {A Unified Approach to Interpreting Model Predictions},
+  year = {2017},
+  eprint = {1705.07874},
+  archivePrefix = {arXiv},
+  doi = {10.48550/arXiv.1705.07874},
+  url = {https://arxiv.org/abs/1705.07874},
+  note = {Verified author preprint, version 2}
 }
-
-@book{who2021guidelines,
-  author    = {{World Health Organization}},
-  title     = {WHO Global Air Quality Guidelines: Particulate Matter ($PM_{2.5}$ and $PM_{10}$), Ozone, Nitrogen Dioxide, Sulfur Dioxide and Carbon Monoxide},
-  publisher = {World Health Organization},
-  address   = {Geneva, Switzerland},
-  year      = {2021},
-  isbn      = {978-92-4-003422-8}
-}
-

@@ -1,0 +1,40 @@
+{
+  "recorded_at_ist": "2026-11-01T20:41:59.815133+05:30",
+  "working_directory": "/workspace/scratch/c393465d1ff6/review/AirSense",
+  "platform": "Linux, Python 3.12.14",
+  "commands": [
+    {
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -u -m scripts.final_audit --verify-training --deep-features",
+      "exit_code": 0,
+      "result": "All eight saved test/validation predictions reproduced; all four baselines trained in temporary storage; submitted models unchanged; importance checks passed.",
+      "log": "final_audit_logs/artifact_and_isolated_training.log"
+    },
+    {
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -u -m scripts.final_audit --deep-features",
+      "exit_code": 0,
+      "result": "Final source version: original raw hashes, training-only transform statistics, saved parameters/CV, model predictions, comparisons and feature outputs verified.",
+      "log": "final_audit_logs/artifact_deep_checks.log"
+    },
+    {
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q",
+      "exit_code": 0,
+      "result": "164 passed in 20.32s",
+      "log": "final_audit_logs/pytest.log"
+    },
+    {
+      "command": "python -m pip check",
+      "exit_code": 0,
+      "result": "No broken requirements found.",
+      "log": "final_audit_logs/pip_check.log"
+    },
+    {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m streamlit run app.py --server.headless true --server.address 127.0.0.1 --server.port 8502 --browser.gatherUsageStats false",
+      "exit_code": null,
+      "result": "Started by a Python subprocess harness: health HTTP 200, body ok; app HTTP 200 with HTML. Server intentionally terminated after the checks.",
+      "log": "final_audit_logs/streamlit_server.log",
+      "harness_exit_code": 0,
+      "server_termination_exit_code": "not retained"
+    }
+  ],
+  "windows_commands_executed": false
+}

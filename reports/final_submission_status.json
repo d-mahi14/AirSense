@@ -1,0 +1,15 @@
+{
+  "recorded_ist": "2026-11-01T20:41:59.815133+05:30",
+  "full_test_suite_passed": 168,
+  "pytest_seconds": 26.06,
+  "new_final_submission_cases": 8,
+  "dependency_check": "passed",
+  "artifact_audit": "passed",
+  "isolated_full_training_models": 4,
+  "current_prediction_candidates": 8,
+  "raw_files_unchanged": 5,
+  "windows_execution": "Previous package: 161 passed, 3 failed; corrected native-format bundle awaits Windows rerun",
+  "browser_layout": "manual, not executed",
+  "review_status": "awaiting user review",
+  "portability_fix": "native JSON plus fitted preprocessing; no retraining"
+}
