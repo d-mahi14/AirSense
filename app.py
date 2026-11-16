@@ -114,7 +114,7 @@ def prediction_page():
         if complete.empty:
             st.warning("No fully observed training example is available.")
         else:
-            example = complete.iloc[len(complete) // 2]
+            example = complete.sample(n=1).iloc[0]
             for feature in required:
                 st.session_state[f"input_{candidate}_{feature}"] = float(example[feature])
             st.session_state[f"date_{candidate}"] = pd.Timestamp(example.Date).date()
@@ -122,9 +122,18 @@ def prediction_page():
             st.session_state.pop("last_prediction", None)
     if st.session_state.get(f"example_{candidate}"):
         st.caption(st.session_state[f"example_{candidate}"] + " Editing fields creates a custom sample.")
+
+    if f"date_{candidate}" not in st.session_state:
+        st.session_state[f"date_{candidate}"] = date(2019, 6, 30)
+
     with st.form(f"prediction_form_{candidate}"):
-        observed_date = st.date_input("Measurement date", value=date(2019, 6, 30), min_value=date(2015, 1, 1), max_value=date.today(), key=f"date_{candidate}",
-                                      help="Date of the observed measurements. Training ends June 2019; later dates may be outside the learned distribution.")
+        observed_date = st.date_input(
+            "Measurement date",
+            min_value=date(2015, 1, 1),
+            max_value=date.today(),
+            key=f"date_{candidate}",
+            help="Date of the observed measurements. Training ends June 2019; later dates may be outside the learned distribution."
+        )
         columns = st.columns(3)
         values = {}
         for i, feature in enumerate(required):

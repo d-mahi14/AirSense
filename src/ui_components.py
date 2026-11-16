@@ -17,7 +17,7 @@ CHART_COLORS = ["#16847d", "#5869b1", "#c28b3d", "#86629a"]
 def apply_style():
     st.markdown('''<style>
     .stApp {background:#f6f8fa;color:#172f3e;}
-    .block-container {padding-top:2.3rem;padding-bottom:3rem;max-width:1320px;}
+    .block-container {padding-top:4.5rem;padding-bottom:3rem;max-width:1320px;}
     h1,h2,h3 {letter-spacing:-.035em;color:#163342;}
     h1 {font-weight:750;}
     [data-testid="stSidebar"] {background:#102f3c;}
